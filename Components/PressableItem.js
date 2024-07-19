@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
+import helper from '../Config/Helper';
 
 
-const PressableButton = ({children, onPress, style}) => {
+const PressableItem = ({children, onPress, style}) => {
     return (
         <Pressable 
             onPress={onPress}
@@ -10,30 +11,23 @@ const PressableButton = ({children, onPress, style}) => {
                 style || styles.default,
                 pressed && styles.pressedStyle  
               ]}>
-          <View>
             {children}
-          </View>
-          </Pressable>
+        </Pressable>
       )
 }
 
-export default PressableButton
+export default PressableItem
 
 const styles = StyleSheet.create({
-    buttonStyle: {
-        padding: 100,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     pressedStyle: {
         opacity: 0.5,  
+        backgroundColor: helper.color.pressedBackgroundColor,
     },
     default:{
-        backgroundColor: "purple",
-        padding: 10, 
-        minWidth: 100, 
-        minHeight: 50, 
-        justifyContent: 'center',
+        flexDirection: 'row',
+        padding: helper.padding.listItemContainer,
+        backgroundColor: helper.color.pressedDefaultBackgroundColor,
+        justifyContent: 'space-between',
         alignItems: 'center',
 
     }  

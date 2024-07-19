@@ -1,27 +1,31 @@
 import React from 'react';
-import { FlatList, Text, View, StyleSheet } from 'react-native';
+import { FlatList, Text, View, StyleSheet, Pressable } from 'react-native';
+import helper from '../Config/Helper';
+import PressableItem from './PressableItem';
+import TextItemTitle from './TextItemTitle';
+import TextGeneral from './TextGeneral';
 
-const ItemsList = ({ items, itemType }) => {
+const ItemsList = ({ items, itemType, onPressItem }) => {
   return (
     <FlatList
       data={items}
       keyExtractor={item => item.id}
       renderItem={({ item }) => (
-        <View style={styles.itemContainer}>
-          <Text style={[styles.text, styles.title]}>{item.title}</Text>
+        <PressableItem onPress={() => onPressItem(item)} style={styles.itemContainer}>
+          <TextItemTitle>{item.title}</TextItemTitle>
           {itemType === 'activity' && (
-            <>
-              <Text style={[styles.text, styles.detail]}>{item.duration}</Text>
-              <Text style={[styles.text, styles.detail]}>{item.date}</Text>
+            <> 
+              <TextGeneral>{item.duration}</TextGeneral>
+              <TextGeneral>{item.date}</TextGeneral>
             </>
-          )}
+          )} 
           {itemType === 'diet' && (
             <>
-              <Text style={[styles.text, styles.detail]}>{item.date}</Text>
-              <Text style={[styles.text, styles.detail]}>{item.time}</Text>
+              <TextGeneral>{item.date}</TextGeneral>
+              <TextGeneral>{item.time}</TextGeneral>
             </>
           )}
-        </View>
+        </PressableItem>
       )}
     />
   );
@@ -30,22 +34,20 @@ const ItemsList = ({ items, itemType }) => {
 const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
-    padding: 20,
+    padding: helper.padding.listItemContainer,
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc'
+    borderBottomColor: helper.color.borderBottomColor,
   },
   text: {
-    fontSize: 14
+    fontSize: helper.fontSize.general,
+    flex: 1,
   },
   title: {
     flex: 2, 
     fontWeight: 'bold'
   },
-  detail: {
-    flex: 1 
-  }
 });
 
 export default ItemsList;
