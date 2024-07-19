@@ -1,20 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Activities from './Screens/Activities';
+import Diet from './Screens/Diet';
+import Setting from './Screens/Setting';
+import {Ionicons, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    
+    <Tab.Navigator screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let IconComponent;
+        let iName;
+        if (route.name === 'Activities') {
+          IconComponent = FontAwesome5;
+          iName = "running";
+        } else if (route.name === 'Diet') {
+          IconComponent = MaterialCommunityIcons;
+          iName = 'food'; 
+        } else if (route.name === 'Setting'){
+          IconComponent = Ionicons;
+          iName = "settings";
+        }
+        return <IconComponent  name={iName} size={size} color={color} />;
+      },
+    })}>
+      <Tab.Screen name="Activities" component={Activities} />
+      <Tab.Screen name="Diet" component={Diet} />
+      <Tab.Screen name="Setting" component={Setting} />
+    </Tab.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={MyTabs} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
