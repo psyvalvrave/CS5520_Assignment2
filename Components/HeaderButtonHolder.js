@@ -6,7 +6,12 @@ import helper from '../Config/Helper';
 const headerButtonHolder = ({onPress, children, style }) => {
     return (
         <Pressable
-            onPress={onPress} style={[styles.buttonContainer, style]}
+            onPress={onPress} 
+            style={({ pressed }) => [
+                styles.buttonContainer,
+                style,
+                pressed ? styles.pressed : null,
+            ]}
             >
                 {children}
             </Pressable>
@@ -19,9 +24,12 @@ const styles = StyleSheet.create({
         marginRight: helper.margin.headerButtonRight,
         alignContent:"center",
         justifyContent:"flex-end",
-        width: "25%",
-        height: "80%",
+        width: "30%",
     },
+    pressed: {
+        opacity: 0.5, 
+        backgroundColor: "#E8E8E8" 
+    }
 });
 
 export default headerButtonHolder;

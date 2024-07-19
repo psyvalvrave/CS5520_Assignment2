@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import helper from '../Config/Helper';
 
-const TextHeaderButton = ({ children, style }) => {
+const TextHeader = ({ children, style }) => {
     return (
         <Text style={[styles.headerButton, style]}>
         {children}
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default TextHeaderButton;
+export default TextHeader;

@@ -3,7 +3,6 @@ import { View, Button  } from 'react-native';
 import ItemsList from '../Components/ItemsList';
 import { FontAwesome5, AntDesign  } from '@expo/vector-icons';
 import HeaderButtonHolder from '../Components/HeaderButtonHolder';
-import TextHeaderButton from '../Components/TextHeaderButton';
 import helper from '../Config/Helper';
 
 const Activities = ({ navigation }) => {
