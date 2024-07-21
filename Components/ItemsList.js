@@ -15,7 +15,7 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
           <TextItemTitle>{item.title}</TextItemTitle>
           {itemType === 'activity' && (
             <> 
-              <TextGeneral>{item.duration}</TextGeneral>
+              <TextGeneral>{item.duration} mins</TextGeneral>
               <TextGeneral>{item.date}</TextGeneral>
             </>
           )} 

@@ -17,8 +17,8 @@ const InputField = ({ value, onChangeText, placeholder, onBlur, keyboardType, st
 
 const styles = StyleSheet.create({
     input: {
-        borderBottomColor: helper.color.inputBottomBorder, 
-        borderBottomWidth: 1, 
+        borderColor: helper.color.inputBottomBorder, 
+        borderWidth: 1, 
         padding: helper.padding.input,
         width: '100%', 
     },
