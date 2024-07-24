@@ -6,6 +6,18 @@ import TextItemTitle from './TextItemTitle';
 import TextGeneral from './TextGeneral';
 
 const ItemsList = ({ items, itemType, onPressItem }) => {
+  //Using GPT to generate a way to print the Weekdays + Date instead of just convert date to string with item.date.toLocaleDateString()
+  const formatDateWithDay = (date) => {
+    const options = {
+        weekday: 'long',  
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    const dateObj = new Date(date);
+    return dateObj.toLocaleDateString('en-US', options);  
+};
   return (
     <FlatList
       data={items}
@@ -16,7 +28,7 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
           {itemType === 'activity' && (
             <> 
               <TextGeneral>{item.duration} mins</TextGeneral>
-              <TextGeneral>{item.date ? item.date.toLocaleDateString() : 'No date'}</TextGeneral>
+              <TextGeneral>{item.date ? formatDateWithDay(item.date) : 'No date'}</TextGeneral>
             </>
           )} 
           {itemType === 'diet' && (

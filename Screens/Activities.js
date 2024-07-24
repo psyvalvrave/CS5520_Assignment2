@@ -33,7 +33,12 @@ const Activities = ({ navigation }) => {
   }, []);
 
   const handlePress = (item) => {
-    navigation.navigate('ActivityForm', { activity: item });
+    // Convert date to a timestamp or string before navigation
+    const modifiedItem = {
+        ...item,
+        date: item.date ? item.date.toISOString() : null  // Use ISO string format
+    };
+    navigation.navigate('ActivityForm', { activity: modifiedItem });
   };
 
   useLayoutEffect(() => {

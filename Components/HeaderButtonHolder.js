@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         marginRight: helper.margin.headerButtonRight,
-        alignContent:"center",
+        alignContent:"flex-end",
         justifyContent:"flex-end",
         width: "30%",
+        paddingRight: 10,
     },
     pressed: {
         opacity: 0.5, 
