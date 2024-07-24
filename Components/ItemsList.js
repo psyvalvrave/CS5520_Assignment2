@@ -16,7 +16,7 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
           {itemType === 'activity' && (
             <> 
               <TextGeneral>{item.duration} mins</TextGeneral>
-              <TextGeneral>{item.date}</TextGeneral>
+              <TextGeneral>{item.date ? item.date.toLocaleDateString() : 'No date'}</TextGeneral>
             </>
           )} 
           {itemType === 'diet' && (
