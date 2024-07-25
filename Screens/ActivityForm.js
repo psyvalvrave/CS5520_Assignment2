@@ -165,7 +165,7 @@ const ActivityForm = () => {
 
     return (
         <View style={styles.container}>
-            <TextHeader>Title</TextHeader>
+            <TextHeader>Title *</TextHeader>
             <DropDownPicker
                 open={open}
                 value={activity.type}
@@ -176,13 +176,14 @@ const ActivityForm = () => {
                 style={styles.dropdown}
                 placeholder="Select an activity type"
             />
-            <TextHeader>Duration</TextHeader>
+            <TextHeader>Duration *</TextHeader>
             <InputField
                 placeholder="Duration (minutes)"
                 value={activity.duration}
                 onChangeText={(text) => handleChange('duration', text)}
             />
-            <TextHeader>Date</TextHeader>
+            <TextHeader></TextHeader>
+            <TextHeader>Date *</TextHeader>
             <DateTimePickerHolder onPress={() => setShowDatePicker(true)}>
                 <TextGeneral>{activity.date.toLocaleDateString()}</TextGeneral>
             </DateTimePickerHolder>

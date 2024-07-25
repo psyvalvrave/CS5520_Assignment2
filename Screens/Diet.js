@@ -11,7 +11,7 @@ const Diet = ({ navigation }) => {
   const [diet, setDiet] = useState([]);
 
   useEffect(() => {
-    const subscriber = onSnapshot(collection(database, "diet"), (querySnapshot) => {
+    const subscriber = onSnapshot(collection(database, "diets"), (querySnapshot) => {
       const loadedDiet = querySnapshot.docs.map(documentSnapshot => {
         const data = documentSnapshot.data();
         // Convert Firebase timestamps to JavaScript Date objects, or handle null dates
@@ -37,13 +37,13 @@ const Diet = ({ navigation }) => {
       ...item,
       date: item.date ? new Date(item.date).toISOString() : null
     };
-    navigation.navigate('DietForm', { diet: modifiedItem });
+    navigation.navigate('DietForm', { dietEntry: modifiedItem });
   };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <HeaderButtonHolder onPress={() => navigation.navigate('DietForm', { isNew: true })}>
+        <HeaderButtonHolder onPress={() => navigation.navigate('DietForm')}>
           <AntDesign name="plus" size={helper.fontSize.headerButton} color={helper.color.headerButton} />
           <FontAwesome5 name="utensils" size={helper.fontSize.headerButton} color={helper.color.headerButton} />
         </HeaderButtonHolder>
