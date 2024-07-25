@@ -18,15 +18,11 @@ export async function editActivity(collectionName, data) {
   }
 }
 
-export async function deleteActivity(collectionName, data) {
-  try {
-      if (id) {
-          const docRef = doc(database, collectionName, data.id);
-          await deleteDoc(docRef);  
-      } else {
-          console.error("No ID provided, cannot delete the document.");
-      }
-  } catch (err) {
-      console.error("Error deleting activity:", err);
-  }
+export async function deleteActivity(collectionName, documentId) {
+  try { 
+    const docRef = doc(database, collectionName, documentId);
+    await deleteDoc(docRef);
+} catch (err) {
+    console.log("deleting err", err);
+}
 }

@@ -21,13 +21,13 @@ export default PressableItem
 const styles = StyleSheet.create({
     pressedStyle: {
         opacity: 0.5,  
-        backgroundColor: helper.color.pressedBackgroundColor,
     },
     default:{
+        width:"45%",
         flexDirection: 'row',
         padding: helper.padding.listItemContainer,
         backgroundColor: helper.color.pressedDefaultBackgroundColor,
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
 
     }  

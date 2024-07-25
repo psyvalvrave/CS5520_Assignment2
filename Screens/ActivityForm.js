@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { View, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Button, StyleSheet, Pressable } from 'react-native';
 import InputField from '../Components/InputField';
 import TextHeader from '../Components/TextHeader';
 import TextGeneral from '../Components/TextGeneral';
+import TextButton from '../Components/TextButton';
+import PressableItem from '../Components/PressableItem';
 import HeaderButtonHolder from '../Components/HeaderButtonHolder';
 import DateTimePickerHolder from '../Components/DateTimePickerHolder';
 import { editActivity, deleteActivity } from '../Firebase/FirestoreHelper';
@@ -16,7 +18,6 @@ const ActivityForm = () => {
     const navigation = useNavigation();
     const route = useRoute();
     const [activity, setActivity] = useState({
-        id: '',
         title: '',
         duration: '',
         date: new Date()  // Default to current date
@@ -35,7 +36,7 @@ const ActivityForm = () => {
 
     useEffect(() => {
         if (route.params?.activity) {
-            const { id, title, duration, date } = route.params.activity;
+            const {id, title, duration, date } = route.params.activity;
             setActivity(prev => ({
                 ...prev,
                 id: id,
@@ -45,6 +46,7 @@ const ActivityForm = () => {
             }));
         }
     }, [route.params?.activity]);
+    
 
     useLayoutEffect(() => {
         const isEditing = !!route.params?.activity;
@@ -52,16 +54,16 @@ const ActivityForm = () => {
             headerTitle: isEditing ? 'Edit Activity' : 'Create Activity',
             headerRight: () => (
                 isEditing ? (
-                    //I want to use my own HeaderButtonHolder, however, there is a bug when I use custom compontent at this point. The button will will place randomly, so I have to use TouchableOpacity instead
+                    //I want to use my own HeaderButtonHolder, however, there is a bug when I use custom compontent at this point. The button will will place randomly, so I have to use Pressable instead
                     //Check https://github.com/software-mansion/react-native-screens/issues/432
-                    <TouchableOpacity onPress={handleDelete}>
+                    <Pressable onPress={handleDelete}>
                         <AntDesign name="delete" size={helper.fontSize.headerButton} color={helper.color.headerButton} />
-                    </TouchableOpacity>
+                    </Pressable>
 
                 ) : undefined
             ),
         });
-    }, [navigation, route.params?.activity]);
+    }, [navigation, route.params?.activity, activity.id]);
     
 
     const handleChange = (name, value) => {
@@ -104,16 +106,17 @@ const ActivityForm = () => {
         }
     };
 
-    const handleDelete = async () => {
-        if (window.confirm("Are you sure you want to delete this activity?")) {
-            try {
-                await deleteActivity(activity.id);
-                navigation.goBack(); 
-            } catch (error) {
-                console.error('Error deleting the activity:', error);
-                alert('Failed to delete the activity.');  // Notify the user of the error
-            }
+    const handleDelete = async (i) => {
+        try {
+            await deleteActivity("activities", activity.id);
+            navigation.goBack(); 
+        } catch (error) {
+            console.error('Error deleting the activity:', error);
+            alert('Failed to delete the activity.');  // Notify the user of the error
         }
+    };
+    const handleCancel = () => {
+        navigation.goBack();
     };
 
     return (
@@ -147,7 +150,14 @@ const ActivityForm = () => {
                     onChange={handleDateChange}
                 />
             )}
-            <Button title="Save Activity" onPress={handleSubmit} />
+            <View style={styles.actionContainer}>
+                <PressableItem onPress={handleCancel} >
+                    <TextButton>Cancel</TextButton>
+                </PressableItem>
+                <PressableItem onPress={handleSubmit} style={styles.saveButton}>
+                    <TextButton>Save</TextButton>
+                </PressableItem>
+            </View>
         </View>
     );
 };
@@ -160,6 +170,17 @@ const styles = StyleSheet.create({
     dropdown: {
         marginBottom: 20,
     },
+    actionContainer: {
+        flexDirection: 'row',
+        justifyContent: "space-evenly",
+    },
+    saveButton:{
+        width:"45%",
+        padding: helper.padding.listItemContainer,
+        backgroundColor: helper.color.saveButtonBackground,
+        justifyContent: 'center',
+    }
+    
 });
 
 export default ActivityForm;
