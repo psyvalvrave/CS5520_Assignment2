@@ -3,6 +3,7 @@ const helper = {
     color:{
         headerButton: "black",
         inputBottomBorder: "black",
+        warning: "gold",
         pressedBackgroundColor: '#ddd',
         pressedDefaultBackgroundColor: "purple",
         borderBottomColor: '#ccc',

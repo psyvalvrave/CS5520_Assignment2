@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: helper.fontSize.title,
         padding: helper.padding.text,
-        flex: 2, 
+        flex: 1, 
         fontWeight: 'bold'
     },
 });
