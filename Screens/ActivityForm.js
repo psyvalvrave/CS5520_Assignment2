@@ -7,7 +7,7 @@ import TextButton from '../Components/TextButton';
 import PressableItem from '../Components/PressableItem';
 import HeaderButtonHolder from '../Components/HeaderButtonHolder';
 import DateTimePickerHolder from '../Components/DateTimePickerHolder';
-import { editActivity, deleteActivity } from '../Firebase/FirestoreHelper';
+import { editDocument, deleteDocument } from '../Firebase/FirestoreHelper';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -118,7 +118,7 @@ const ActivityForm = () => {
                                 activityData.special = !isChecked; // Update special if checkbox is checked
                             }
                             delete activityData.type;
-                            await editActivity('activities', activityData);
+                            await editDocument('activities', activityData);
                             navigation.goBack();
                         } catch (error) {
                             console.error('Failed to save the activity:', error);
@@ -145,7 +145,7 @@ const ActivityForm = () => {
                     text: "Delete",
                     onPress: async () => {
                         try {
-                            await deleteActivity("activities", activity.id);
+                            await deleteDocument("activities", activity.id);
                             navigation.goBack();
                         } catch (error) {
                             console.error('Error deleting the activity:', error);

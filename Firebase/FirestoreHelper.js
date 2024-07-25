@@ -1,7 +1,7 @@
 import { collection, setDoc, doc, deleteDoc, updateDoc  } from "firebase/firestore"; 
 import { database } from "./FirebaseSetup";
 
-export async function editActivity(collectionName, data) {
+export async function editDocument(collectionName, data) {
   try {
       let docRef;
       if (data.id) {
@@ -18,7 +18,7 @@ export async function editActivity(collectionName, data) {
   }
 }
 
-export async function deleteActivity(collectionName, documentId) {
+export async function deleteDocument(collectionName, documentId) {
   try { 
     const docRef = doc(database, collectionName, documentId);
     await deleteDoc(docRef);

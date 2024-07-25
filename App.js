@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Activities from './Screens/Activities';
 import ActivityForm from './Screens/ActivityForm';
+import DietForm from './Screens/DietForm';
 import Diet from './Screens/Diet';
 import Setting from './Screens/Setting';
 import {Ionicons, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons';
@@ -45,7 +46,8 @@ export default function App() {
         <Stack.Screen name="Home" component={MyTabs} options={{ headerShown: false }}/>
         <Stack.Screen name="Activities" component={Activities}/>
         <Stack.Screen name="Diet" component={Diet}/>
-        <Stack.Screen name="ActivityForm" component={ActivityForm} options={{ title: 'Add Activity' }} />
+        <Stack.Screen name="ActivityForm" component={ActivityForm} />
+        <Stack.Screen name="DietForm" component={DietForm}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
