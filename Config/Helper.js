@@ -4,12 +4,13 @@ const helper = {
         headerButton: "black",
         inputBottomBorder: "black",
         warning: "gold",
-        pressedBackgroundColor: '#ddd',
+        pressedBackgroundColor: '#8e8e8e',
         pressedDefaultBackgroundColor: "purple",
         borderBottomColor: '#ccc',
         transparent: 'rgba(0, 0, 0, 0.4)',
         saveButtonBackground: '#0000FF',
         cancelButtonBackground:'#FF0000',
+        infoBox:"yellow",
     },
     fontSize:{
         title: 14,
@@ -27,6 +28,7 @@ const helper = {
         listItemContainer: 5,
         headerButtonRight: 5,
         headerButton: 2,
+        holder: 10,
     },
     buttonPosition:{
         bottom: 30,

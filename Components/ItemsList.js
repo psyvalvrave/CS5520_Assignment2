@@ -35,14 +35,22 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
           <View style={styles.right}>
             {itemType === 'activity' && (
               <>
+              <View style={styles.holderLeft}>
                 <TextGeneral>{item.date ? formatDateWithDay(item.date) : 'No date'}</TextGeneral>
+                </View>
+                <View style={styles.holderRight}>
                 <TextGeneral>{item.duration} mins</TextGeneral>
+                </View>
               </>
             )}
             {itemType === 'diet' && (
               <>
+              <View style={styles.holderLeft}>
                 <TextGeneral>{formatDateWithDay(item.date)}</TextGeneral>
+                </View>
+                <View style={styles.holderRight}>
                 <TextGeneral>      {item.calories}</TextGeneral>
+                </View>
               </>
             )}
           </View>
@@ -66,10 +74,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   right: {
-    flex: 3, 
+    flex: 4, 
     flexDirection: "row", 
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: 'space-between',
+  },
+  holderLeft:{
+    backgroundColor:helper.color.infoBox,
+    width:"60%",
+    marginRight: helper.margin.holder,
+  },
+  holderRight:{
+    backgroundColor:helper.color.infoBox,
+    width:"35%",
+    marginLeft:helper.margin.holder,
   }
+  
 });
 
 export default ItemsList;
