@@ -20,11 +20,17 @@ const helper = {
         listItemContainer:20,
         text: 5,
         input: 10,
+        checkBox: 10,
     },
     margin:{
         listItemContainer: 5,
         headerButtonRight: 5,
         headerButton: 2,
+    },
+    buttonPosition:{
+        bottom: 30,
+        left: 0,  
+        right: 0,
     }
 };
 
