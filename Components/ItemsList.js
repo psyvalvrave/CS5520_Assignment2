@@ -49,7 +49,7 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
                 <TextGeneral>{formatDateWithDay(item.date)}</TextGeneral>
                 </View>
                 <View style={styles.holderRight}>
-                <TextGeneral>      {item.calories}</TextGeneral>
+                <TextGeneral>{item.calories} cal</TextGeneral>
                 </View>
               </>
             )}
@@ -83,11 +83,13 @@ const styles = StyleSheet.create({
     backgroundColor:helper.color.infoBox,
     width:"60%",
     marginRight: helper.margin.holder,
+    alignItems: "center",
   },
   holderRight:{
     backgroundColor:helper.color.infoBox,
     width:"35%",
     marginLeft:helper.margin.holder,
+    alignItems: "center",
   }
   
 });

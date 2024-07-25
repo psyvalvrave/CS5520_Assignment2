@@ -1,10 +1,13 @@
 //This is a helper file 
 const helper = {
     color:{
+        backColor:'#ddd',
+        backColorDark:'#333',
         headerButton: "black",
+        headerButtonDark: '#fff',
         inputBottomBorder: "black",
         warning: "gold",
-        pressedBackgroundColor: '#8e8e8e',
+        pressedBackgroundColor: '#ddd',
         pressedDefaultBackgroundColor: "purple",
         borderBottomColor: '#ccc',
         transparent: 'rgba(0, 0, 0, 0.4)',

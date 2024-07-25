@@ -7,7 +7,9 @@ import ActivityForm from './Screens/ActivityForm';
 import DietForm from './Screens/DietForm';
 import Diet from './Screens/Diet';
 import Setting from './Screens/Setting';
+import {ThemeProvider}  from './Components/ThemeContext';
 import {Ionicons, FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -41,14 +43,16 @@ function MyTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={MyTabs} options={{ headerShown: false }}/>
-        <Stack.Screen name="Activities" component={Activities}/>
-        <Stack.Screen name="Diet" component={Diet}/>
-        <Stack.Screen name="ActivityForm" component={ActivityForm} />
-        <Stack.Screen name="DietForm" component={DietForm}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={MyTabs} options={{ headerShown: false }}/>
+          <Stack.Screen name="Activities" component={Activities}/>
+          <Stack.Screen name="Diet" component={Diet}/>
+          <Stack.Screen name="ActivityForm" component={ActivityForm} />
+          <Stack.Screen name="DietForm" component={DietForm}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }

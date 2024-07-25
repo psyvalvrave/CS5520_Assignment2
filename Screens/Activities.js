@@ -6,9 +6,11 @@ import HeaderButtonHolder from '../Components/HeaderButtonHolder';
 import { database } from "../Firebase/FirebaseSetup";
 import { collection, onSnapshot } from 'firebase/firestore';
 import helper from '../Config/Helper';
+import { useTheme } from '../Components/ThemeContext';
 
 const Activities = ({ navigation }) => {
   const [activities, setActivities] = useState([ ]);
+  const { theme } = useTheme(); 
 
   useEffect(() => {
     const subscriber = onSnapshot(collection(database, "activities"), (querySnapshot) => {
@@ -52,7 +54,7 @@ const Activities = ({ navigation }) => {
     });
   }, [navigation]);
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1}}>
       <ItemsList items={activities} itemType="activity" onPressItem={handlePress}/>
     </View>
   );
