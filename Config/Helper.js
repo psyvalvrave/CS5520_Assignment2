@@ -7,10 +7,13 @@ const helper = {
         pressedDefaultBackgroundColor: "purple",
         borderBottomColor: '#ccc',
         transparent: 'rgba(0, 0, 0, 0.4)',
+        saveButtonBackground: '#0000FF',
+        cancelButtonBackground:'#FF0000',
     },
     fontSize:{
         title: 14,
         general: 14,
+        Button: 20,
         headerButton: 24,
     },
     padding:{

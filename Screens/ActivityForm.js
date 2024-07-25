@@ -151,10 +151,10 @@ const ActivityForm = () => {
                 />
             )}
             <View style={styles.actionContainer}>
-                <PressableItem onPress={handleCancel} >
+                <PressableItem onPress={handleCancel} style={[styles.Button, styles.cancel]}>
                     <TextButton>Cancel</TextButton>
                 </PressableItem>
-                <PressableItem onPress={handleSubmit} style={styles.saveButton}>
+                <PressableItem onPress={handleSubmit} style={[styles.Button, styles.save]}>
                     <TextButton>Save</TextButton>
                 </PressableItem>
             </View>
@@ -174,11 +174,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: "space-evenly",
     },
-    saveButton:{
+    Button:{
         width:"45%",
         padding: helper.padding.listItemContainer,
-        backgroundColor: helper.color.saveButtonBackground,
         justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    save:{
+        backgroundColor: helper.color.saveButtonBackground,
+    },
+    cancel:{
+        backgroundColor: helper.color.cancelButtonBackground,
     }
     
 });

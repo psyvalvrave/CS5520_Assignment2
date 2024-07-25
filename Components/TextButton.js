@@ -12,9 +12,10 @@ const TextButton = ({ children, style }) => {
 
 const styles = StyleSheet.create({
     title: {
-        fontSize: helper.fontSize.title,
-        padding: helper.padding.text,
-        flex: 2, 
+        color:"white",
+        fontSize: helper.fontSize.Button,
+        paddingHorizontal: helper.padding.text,
+        flex: 1, 
         fontWeight: 'bold',
         textAlign:"center",
     },

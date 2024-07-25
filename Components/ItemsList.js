@@ -52,10 +52,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: helper.color.borderBottomColor,
   },
-  text: {
-    fontSize: helper.fontSize.general,
-    flex: 1,
-  },
   title: {
     flex: 2, 
     fontWeight: 'bold'
