@@ -8,6 +8,8 @@ import { database } from "../Firebase/FirebaseSetup";
 import helper from '../Config/Helper';
 import { useTheme } from '../Components/ThemeContext';
 
+//the diet screen work just like Activities, so I use AI to generate a similar one first, and make some minor change by myself to fit Diet
+
 const Diet = ({ navigation }) => {
   const [diet, setDiet] = useState([]);
   const { theme } = useTheme(); 

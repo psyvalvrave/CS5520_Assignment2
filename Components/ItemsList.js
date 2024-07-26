@@ -7,6 +7,8 @@ import TextItemTitle from './TextItemTitle';
 import TextGeneral from './TextGeneral';
 import { useTheme } from '../Components/ThemeContext';
 
+//Component show each item individually in database as list, use Flatlist to make sure the list is scrollable 
+
 const ItemsList = ({ items, itemType, onPressItem }) => {
   const { theme } = useTheme(); 
   //Using GPT to generate a way to print the Weekdays + Date instead of just convert date to string with item.date.toLocaleDateString()
@@ -37,6 +39,7 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
     },
   });
 
+  //create a list to show all detail of one object. Special will show optionally base on the boolen value special 
   return (
     <FlatList
       data={items}

@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
+//Component for theme selection when we choose different theme
+
 const ThemeContext = createContext();
 
 export const useTheme = () => useContext(ThemeContext);

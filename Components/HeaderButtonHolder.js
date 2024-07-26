@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import helper from '../Config/Helper';
 
+//Component for header icons holder: Work as the pressable button
 
 const headerButtonHolder = ({onPress, children, style }) => {
     return (

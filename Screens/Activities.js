@@ -40,7 +40,7 @@ const Activities = ({ navigation }) => {
         ...item,
         date: item.date ? item.date.toISOString() : null  // Use ISO string format
     };
-    navigation.navigate('ActivityForm', { activity: modifiedItem });
+    navigation.navigate('ActivityForm', { activity: modifiedItem }); //pass the object into edit screen when we try to edit
   };
 
   const styles = StyleSheet.create({
@@ -50,6 +50,7 @@ const Activities = ({ navigation }) => {
     }
   });
 
+  //render the header with button, useLayoutEffect can make sure changes are visble for the user immediately, and it help avoiding the position of elements can be render in some weird spot
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (

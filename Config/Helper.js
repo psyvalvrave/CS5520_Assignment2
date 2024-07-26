@@ -1,4 +1,4 @@
-//This is a helper file 
+//This is a helper file to maintain consistency of style
 const helper = {
     color:{
         backColor:'#ddd',

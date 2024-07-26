@@ -3,6 +3,8 @@ import { Text, StyleSheet } from 'react-native';
 import helper from '../Config/Helper';
 import { useTheme } from '../Components/ThemeContext';
 
+//Component for one of text type. It is use as title above input field
+
 const TextItemTitle = ({ children, style }) => {
     const { theme } = useTheme(); 
     const styles = StyleSheet.create({

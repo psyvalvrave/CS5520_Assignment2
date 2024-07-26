@@ -39,7 +39,7 @@ const ActivityForm = () => {
     const [isChecked, setChecked] = useState(false); // This state manages the checkbox independently
     const { theme } = useTheme(); 
 
-
+    //receive the object is being passed, and set it to the the activity we are going to edit
     useEffect(() => {
         if (route.params?.activity) {
             const { id, title, duration, date, special } = route.params.activity;
@@ -54,6 +54,7 @@ const ActivityForm = () => {
         }
     }, [route.params?.activity]);
 
+    //switching the header title when the document is being created or edited
     useLayoutEffect(() => {
         const isEditing = !!route.params?.activity;
         navigation.setOptions({
@@ -75,6 +76,7 @@ const ActivityForm = () => {
         }));
     };
 
+    //once date being change, hide the canlender view
     const handleDateChange = (event, selectedDate) => {
         const currentDate = selectedDate || activity.date;
         setShowDatePicker(false);
@@ -83,7 +85,7 @@ const ActivityForm = () => {
             date: currentDate
         }));
     };
-
+    //create a confirm box when we try to submit our save or delete our record
     const handleSubmit = async () => {
         if (activity.duration.trim() === '' || isNaN(activity.duration)) {
             alert('Please enter a valid duration in minutes.');
@@ -94,6 +96,7 @@ const ActivityForm = () => {
             return;
         }
 
+        //if the id is not existed, this is the new item, so this item can be special
         let isSpecial = activity.special;
         if (!activity.id && parseInt(activity.duration) > 60 && (activity.type === 'Running' || activity.type === 'Weights')) {
             isSpecial = true;
@@ -121,7 +124,7 @@ const ActivityForm = () => {
                                 activityData.special = !isChecked; // Update special if checkbox is checked
                             }
                             delete activityData.type;
-                            await editDocument('activities', activityData);
+                            await editDocument('activities', activityData); //change the record in the database here
                             navigation.goBack();
                         } catch (error) {
                             console.error('Failed to save the activity:', error);
@@ -148,7 +151,7 @@ const ActivityForm = () => {
                     text: "Delete",
                     onPress: async () => {
                         try {
-                            await deleteDocument("activities", activity.id);
+                            await deleteDocument("activities", activity.id); //delete the record from the database
                             navigation.goBack();
                         } catch (error) {
                             console.error('Error deleting the activity:', error);

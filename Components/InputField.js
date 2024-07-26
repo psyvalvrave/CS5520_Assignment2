@@ -3,6 +3,8 @@ import { TextInput, StyleSheet } from 'react-native';
 import helper from '../Config/Helper';
 import { useTheme } from '../Components/ThemeContext';
 
+//Component for input field, the custom textInput
+
 const InputField = ({ value, onChangeText, placeholder, onBlur, keyboardType, style, onFocus}) => { 
     const { theme } = useTheme();
 

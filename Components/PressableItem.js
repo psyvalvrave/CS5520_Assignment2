@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
 import helper from '../Config/Helper';
 
+//Component work as Pressable Button or Item
 
 const PressableItem = ({children, onPress, style}) => {
     return (

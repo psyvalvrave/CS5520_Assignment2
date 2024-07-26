@@ -14,6 +14,8 @@ import Checkbox from 'expo-checkbox';
 import helper from '../Config/Helper';
 import { useTheme } from '../Components/ThemeContext';
 
+//the diet screen work just like ActivityForm, so I use AI to generate a similar one first, and make some minor change by myself to fit the DietForm
+
 const DietForm = () => {
     const navigation = useNavigation();
     const route = useRoute();

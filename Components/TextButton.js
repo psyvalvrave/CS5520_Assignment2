@@ -2,6 +2,8 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import helper from '../Config/Helper';
 
+//Component for one of text type. It is use inside Button(Pressable)
+
 const TextButton = ({ children, style }) => {
     return (
         <Text style={[styles.title, style]}>

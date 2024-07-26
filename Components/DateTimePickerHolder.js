@@ -2,6 +2,9 @@ import {StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react'
 import helper from '../Config/Helper';
 import { useTheme } from '../Components/ThemeContext';
+
+//Component for wrap up DateTimePicker: The part to show canlender 
+
 const DateTimePickerHolder = ({onPress, style, children}) => {
   const { theme } = useTheme(); 
   const styles = StyleSheet.create({

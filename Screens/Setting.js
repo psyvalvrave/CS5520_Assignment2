@@ -8,7 +8,7 @@ import helper from '../Config/Helper';
 const SettingsScreen = () => {
     const { theme, toggleTheme } = useTheme();
     
-    const styles = getStyles(theme); // Function to get styles based on the current theme
+    const styles = getStyles(theme); // Function(getStyles) to get styles based on the current theme
     return (
         <View style={styles.container}>
             <TextHeader style={styles.text}>Theme: {theme} </TextHeader>
@@ -19,6 +19,7 @@ const SettingsScreen = () => {
     );
 };
 
+//Change the style of current page base on theme. We can put this part inside the export default function, or create a new function like this
 function getStyles(theme) {
     return StyleSheet.create({
         container: {

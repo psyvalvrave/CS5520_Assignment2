@@ -1,6 +1,7 @@
 import { collection, setDoc, doc, deleteDoc, updateDoc  } from "firebase/firestore"; 
 import { database } from "./FirebaseSetup";
 
+//use setDoc since one function can handle both add and edit
 export async function editDocument(collectionName, data) {
   try {
       let docRef;
