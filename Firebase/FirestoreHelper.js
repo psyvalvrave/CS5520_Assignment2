@@ -9,7 +9,7 @@ export async function editDocument(collectionName, data) {
           docRef = doc(database, collectionName, data.id);
       } else {
           // If no ID is provided, let Firestore auto-generate one
-          docRef = doc(collection(database, collectionName)); // Firestore auto-generates an ID
+          docRef = doc(collection(database, collectionName)); 
       }
 
       await setDoc(docRef, data, { merge: true });

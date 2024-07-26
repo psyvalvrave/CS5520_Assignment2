@@ -165,7 +165,7 @@ const ActivityForm = () => {
 
     return (
         <View style={styles.container}>
-            <TextHeader>Title *</TextHeader>
+            <TextHeader>Title * </TextHeader>
             <DropDownPicker
                 open={open}
                 value={activity.type}
@@ -176,16 +176,15 @@ const ActivityForm = () => {
                 style={styles.dropdown}
                 placeholder="Select an activity type"
             />
-            <TextHeader>Duration *</TextHeader>
+            <TextHeader>Duration * </TextHeader>
             <InputField
                 placeholder="Duration (minutes)"
                 value={activity.duration}
                 onChangeText={(text) => handleChange('duration', text)}
             />
-            <TextHeader></TextHeader>
-            <TextHeader>Date *</TextHeader>
+            <TextHeader style={{marginTop:helper.margin.submitFormTextTop}}>Date * </TextHeader>
             <DateTimePickerHolder onPress={() => setShowDatePicker(true)}>
-                <TextGeneral>{activity.date.toLocaleDateString()}</TextGeneral>
+                <TextGeneral>{activity.date.toLocaleDateString()} </TextGeneral>
             </DateTimePickerHolder>
             {showDatePicker && (
                 <DateTimePicker
@@ -205,16 +204,16 @@ const ActivityForm = () => {
                             }}
                         />
                         <TextGeneral style={styles.checkboxText}>
-                            This item is marked as special. Uncheck if you wish to remove this designation.
+                            This item is marked as special. Uncheck if you wish to remove this designation. 
                         </TextGeneral>
                     </View>
                 )}
                 <View style={styles.actionContainer}>
                     <PressableItem onPress={handleCancel} style={[styles.Button, styles.cancel]}>
-                        <TextButton>Cancel</TextButton>
+                        <TextButton>Cancel </TextButton>
                     </PressableItem>
                     <PressableItem onPress={handleSubmit} style={[styles.Button, styles.save]}>
-                        <TextButton>Save</TextButton>
+                        <TextButton>Save </TextButton>
                     </PressableItem>
                 </View>
             </View>

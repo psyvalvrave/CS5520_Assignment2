@@ -1,15 +1,16 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useTheme } from '../Components/ThemeContext'; // adjust the path as necessary
+import TextHeader from '../Components/TextHeader';
 
 const SettingsScreen = () => {
     const { theme, toggleTheme } = useTheme();
     
     const styles = getStyles(theme); // Function to get styles based on the current theme
-
+    console.log(theme);
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Current Theme: {theme}</Text>
+            <TextHeader style={styles.text}>Theme: {theme} </TextHeader>
             <Button title="Toggle Theme" onPress={toggleTheme} />
         </View>
     );

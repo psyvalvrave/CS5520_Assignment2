@@ -16,9 +16,9 @@ const helper = {
         infoBox:"yellow",
     },
     fontSize:{
-        title: 14,
-        general: 14,
-        Button: 20,
+        title: 12,
+        general: 10,
+        Button: 18,
         headerButton: 24,
     },
     padding:{
@@ -32,6 +32,7 @@ const helper = {
         headerButtonRight: 5,
         headerButton: 2,
         holder: 10,
+        submitFormTextTop: 5,
     },
     buttonPosition:{
         bottom: 30,

@@ -129,20 +129,18 @@ const DietForm = () => {
 
     return (
         <View style={styles.container}>
-            <TextHeader>Description *</TextHeader>
+            <TextHeader>Description * </TextHeader>
             <InputField
                 value={dietEntry.title}
                 onChangeText={(text) => setDietEntry(prev => ({ ...prev, title: text }))}
             />
-            <TextHeader></TextHeader>
-            <TextHeader>Calories *</TextHeader>
+            <TextHeader style={{marginTop:helper.margin.submitFormTextTop}}>Calories * </TextHeader>
             <InputField
                 value={dietEntry.calories}
                 onChangeText={(text) => setDietEntry(prev => ({ ...prev, calories: text }))}
                 keyboardType="numeric"
             />
-            <TextHeader></TextHeader>
-            <TextHeader>Date *</TextHeader>
+            <TextHeader style={{marginTop:helper.margin.submitFormTextTop}}>Date * </TextHeader>
             <DateTimePickerHolder onPress={() => setShowDatePicker(true)}>
                 <TextGeneral>{dietEntry.date.toLocaleDateString()}</TextGeneral>
             </DateTimePickerHolder>
@@ -162,16 +160,16 @@ const DietForm = () => {
                             onValueChange={setChecked}
                         />
                         <TextGeneral style={styles.checkboxText}>
-                            This item is marked as special. Uncheck if you wish to remove this designation.
+                            This item is marked as special. Uncheck if you wish to remove this designation. 
                         </TextGeneral>
                     </View>
                 )}
                 <View style={styles.actionContainer}>
                     <PressableItem onPress={handleCancel} style={[styles.Button, styles.cancel]}>
-                        <TextButton>Cancel</TextButton>
+                        <TextButton>Cancel </TextButton>
                     </PressableItem>
                     <PressableItem onPress={handleSubmit} style={[styles.Button, styles.save]}>
-                        <TextButton>Save</TextButton>
+                        <TextButton>Save </TextButton>
                     </PressableItem>
                 </View>
             </View>

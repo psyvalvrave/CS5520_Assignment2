@@ -16,11 +16,13 @@ export default DateTimePickerHolder
 
 const styles = StyleSheet.create({
     input: {
-        height: '5%',
+        height: '10%',
         borderColor: helper.color.inputBottomBorder,
         borderWidth: 1,
         marginBottom: 20,
         padding: helper.padding.input,
         justifyContent: "center",
+        alignItems:"flex-start",
+        flexDirection: "row",
     }
 })

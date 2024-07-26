@@ -26,8 +26,8 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
       keyExtractor={item => item.id}
       renderItem={({ item }) => (
         <PressableItem onPress={() => onPressItem(item)} style={styles.itemContainer}>
-          <View style={{flex: 2, flexDirection: "row", marginRight: 10}}>
-            <TextItemTitle>{item.title}</TextItemTitle>
+          <View style={{flex: 2, flexDirection: "row", marginRight: 10, alignItems:"center"}}>
+            <TextItemTitle>{item.title} </TextItemTitle>
             {item.special && (
               <AntDesign name="infocirlce" size={helper.fontSize.headerButton} color={helper.color.warning} />
             )}
@@ -35,21 +35,21 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
           <View style={styles.right}>
             {itemType === 'activity' && (
               <>
-              <View style={styles.holderLeft}>
-                <TextGeneral>{item.date ? formatDateWithDay(item.date) : 'No date'}</TextGeneral>
+              <View style={[styles.holderLeft, styles.generalHolder]}>
+                <TextGeneral>{item.date ? formatDateWithDay(item.date) : 'No date'} </TextGeneral>
                 </View>
-                <View style={styles.holderRight}>
-                <TextGeneral>{item.duration} mins</TextGeneral>
+                <View style={[styles.holderRight, styles.generalHolder]}>
+                <TextGeneral>{item.duration} mins </TextGeneral>
                 </View>
               </>
             )}
             {itemType === 'diet' && (
               <>
-              <View style={styles.holderLeft}>
-                <TextGeneral>{formatDateWithDay(item.date)}</TextGeneral>
+              <View style={[styles.holderLeft, styles.generalHolder]}>
+                <TextGeneral>{formatDateWithDay(item.date)} </TextGeneral>
                 </View>
-                <View style={styles.holderRight}>
-                <TextGeneral>{item.calories} cal</TextGeneral>
+                <View style={[styles.holderRight, styles.generalHolder]}>
+                <TextGeneral>{item.calories} cal </TextGeneral>
                 </View>
               </>
             )}
@@ -78,18 +78,23 @@ const styles = StyleSheet.create({
     flexDirection: "row", 
     alignItems: "center",
     justifyContent: 'space-between',
+    height: "100%",
   },
-  holderLeft:{
+  generalHolder:{
     backgroundColor:helper.color.infoBox,
-    width:"60%",
     marginRight: helper.margin.holder,
     alignItems: "center",
+    justifyContent:"center",
+    borderWidth: 2, 
+    borderColor: 'black', 
+    borderRadius: 10,
+    height:"auto",
+  },
+  holderLeft:{
+    width:"60%",
   },
   holderRight:{
-    backgroundColor:helper.color.infoBox,
     width:"35%",
-    marginLeft:helper.margin.holder,
-    alignItems: "center",
   }
   
 });
