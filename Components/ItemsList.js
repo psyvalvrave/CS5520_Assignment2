@@ -5,8 +5,10 @@ import helper from '../Config/Helper';
 import PressableItem from './PressableItem';
 import TextItemTitle from './TextItemTitle';
 import TextGeneral from './TextGeneral';
+import { useTheme } from '../Components/ThemeContext';
 
 const ItemsList = ({ items, itemType, onPressItem }) => {
+  const { theme } = useTheme(); 
   //Using GPT to generate a way to print the Weekdays + Date instead of just convert date to string with item.date.toLocaleDateString()
   //from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
   const formatDateWithDay = (date) => {
@@ -20,6 +22,21 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
     return dateObj.toLocaleDateString(undefined, options);  
   };
 
+  const themeStyles = StyleSheet.create({
+    text: {
+      color: theme === 'dark' ? helper.color.textColorDark : helper.color.textColor, 
+    },
+    generalHolder:{
+      backgroundColor: theme === 'dark' ? helper.color.infoBoxDark : helper.color.infoBox, 
+      marginRight: helper.margin.holder,
+      alignItems: "center",
+      justifyContent:"center",
+      borderWidth: 2, 
+      borderColor: 'black', 
+      borderRadius: 10,
+    },
+  });
+
   return (
     <FlatList
       data={items}
@@ -27,28 +44,28 @@ const ItemsList = ({ items, itemType, onPressItem }) => {
       renderItem={({ item }) => (
         <PressableItem onPress={() => onPressItem(item)} style={styles.itemContainer}>
           <View style={{flex: 2, flexDirection: "row", marginRight: 10, alignItems:"center"}}>
-            <TextItemTitle>{item.title} </TextItemTitle>
+            <TextItemTitle style={themeStyles.text}>{item.title} </TextItemTitle>
             {item.special && (
-              <AntDesign name="infocirlce" size={helper.fontSize.headerButton} color={helper.color.warning} />
+              <AntDesign name="infocirlce" size={helper.fontSize.headerButton} color={theme === 'dark' ? helper.color.warning:helper.color.warningDark} />
             )}
           </View>
           <View style={styles.right}>
             {itemType === 'activity' && (
               <>
-              <View style={[styles.holderLeft, styles.generalHolder]}>
+              <View style={[styles.holderLeft, themeStyles.generalHolder]}>
                 <TextGeneral>{item.date ? formatDateWithDay(item.date) : 'No date'} </TextGeneral>
                 </View>
-                <View style={[styles.holderRight, styles.generalHolder]}>
+                <View style={[styles.holderRight, themeStyles.generalHolder]}>
                 <TextGeneral>{item.duration} mins </TextGeneral>
                 </View>
               </>
             )}
             {itemType === 'diet' && (
               <>
-              <View style={[styles.holderLeft, styles.generalHolder]}>
+              <View style={[styles.holderLeft, themeStyles.generalHolder]}>
                 <TextGeneral>{formatDateWithDay(item.date)} </TextGeneral>
                 </View>
-                <View style={[styles.holderRight, styles.generalHolder]}>
+                <View style={[styles.holderRight, themeStyles.generalHolder]}>
                 <TextGeneral>{item.calories} cal </TextGeneral>
                 </View>
               </>
@@ -79,16 +96,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: 'space-between',
     height: "100%",
-  },
-  generalHolder:{
-    backgroundColor:helper.color.infoBox,
-    marginRight: helper.margin.holder,
-    alignItems: "center",
-    justifyContent:"center",
-    borderWidth: 2, 
-    borderColor: 'black', 
-    borderRadius: 10,
-    height:"auto",
   },
   holderLeft:{
     width:"60%",

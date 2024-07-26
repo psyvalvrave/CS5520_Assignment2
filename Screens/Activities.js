@@ -1,5 +1,5 @@
 import React, {useLayoutEffect, useState, useEffect} from 'react';
-import { View, Button  } from 'react-native';
+import { View, StyleSheet   } from 'react-native';
 import ItemsList from '../Components/ItemsList';
 import { FontAwesome5, AntDesign  } from '@expo/vector-icons';
 import HeaderButtonHolder from '../Components/HeaderButtonHolder';
@@ -43,6 +43,13 @@ const Activities = ({ navigation }) => {
     navigation.navigate('ActivityForm', { activity: modifiedItem });
   };
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme === 'dark' ? helper.color.backColorDark : helper.color.backColor, 
+    }
+  });
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -54,10 +61,14 @@ const Activities = ({ navigation }) => {
     });
   }, [navigation]);
   return (
-    <View style={{ flex: 1}}>
+    <View style={styles.container}>
       <ItemsList items={activities} itemType="activity" onPressItem={handlePress}/>
     </View>
   );
+
+  
+
 };
 
 export default Activities;
+

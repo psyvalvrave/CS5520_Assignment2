@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import ItemsList from '../Components/ItemsList';
 import { FontAwesome5, AntDesign } from '@expo/vector-icons';
 import HeaderButtonHolder from '../Components/HeaderButtonHolder';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { database } from "../Firebase/FirebaseSetup";
 import helper from '../Config/Helper';
+import { useTheme } from '../Components/ThemeContext';
 
 const Diet = ({ navigation }) => {
   const [diet, setDiet] = useState([]);
+  const { theme } = useTheme(); 
 
   useEffect(() => {
     const subscriber = onSnapshot(collection(database, "diets"), (querySnapshot) => {
@@ -51,8 +53,15 @@ const Diet = ({ navigation }) => {
     });
   }, [navigation]);
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme === 'dark' ? helper.color.backColorDark : helper.color.backColor, 
+    }
+  });
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <ItemsList items={diet} itemType="diet" onPressItem={handlePress}/>
     </View>
   );

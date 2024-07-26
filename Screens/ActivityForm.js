@@ -14,6 +14,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { AntDesign } from '@expo/vector-icons';
 import Checkbox from 'expo-checkbox';
 import helper from '../Config/Helper';
+import { useTheme } from '../Components/ThemeContext';
 
 const ActivityForm = () => {
     const navigation = useNavigation();
@@ -36,6 +37,8 @@ const ActivityForm = () => {
         { label: 'Hiking', value: 'Hiking' },
     ]);
     const [isChecked, setChecked] = useState(false); // This state manages the checkbox independently
+    const { theme } = useTheme(); 
+
 
     useEffect(() => {
         if (route.params?.activity) {
@@ -163,8 +166,15 @@ const ActivityForm = () => {
         navigation.goBack();
     };
 
+    const themeStyles = StyleSheet.create({
+        container: {
+          flex: 1,
+          backgroundColor: theme === 'dark' ? helper.color.backColorDark : helper.color.backColor, 
+        }
+      });
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, themeStyles.container]}>
             <TextHeader>Title * </TextHeader>
             <DropDownPicker
                 open={open}

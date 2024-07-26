@@ -12,6 +12,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { AntDesign } from '@expo/vector-icons';
 import Checkbox from 'expo-checkbox';
 import helper from '../Config/Helper';
+import { useTheme } from '../Components/ThemeContext';
 
 const DietForm = () => {
     const navigation = useNavigation();
@@ -24,7 +25,7 @@ const DietForm = () => {
     });
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [isChecked, setChecked] = useState(false); // State for checkbox
-
+    const { theme } = useTheme(); 
     useEffect(() => {
         if (route.params?.dietEntry) {
             const { id, title, calories, date, special } = route.params.dietEntry;
@@ -127,8 +128,15 @@ const DietForm = () => {
         navigation.goBack();
     };
 
+    const themeStyles = StyleSheet.create({
+        container: {
+          flex: 1,
+          backgroundColor: theme === 'dark' ? helper.color.backColorDark : helper.color.backColor, 
+        }
+      });
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, themeStyles.container]}>
             <TextHeader>Description * </TextHeader>
             <InputField
                 value={dietEntry.title}

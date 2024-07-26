@@ -33,6 +33,13 @@ function MyTabs() {
         }
         return <IconComponent  name={iName} size={size} color={color} />;
       },
+      tabBarLabelStyle: {
+        fontSize: 12, 
+        width: '100%',
+      },
+      tabBarStyle: {
+        paddingHorizontal: 5 
+      }
     })}>
       <Tab.Screen name="Activities" component={Activities} />
       <Tab.Screen name="Diet" component={Diet} />
