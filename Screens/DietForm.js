@@ -65,6 +65,11 @@ const DietForm = () => {
     };
 
     const handleSubmit = async () => {
+        if (!dietEntry.title.trim()) {
+            alert('Please enter valid description for diet.');
+            return;
+        }
+
         if (dietEntry.calories.trim() === '' || isNaN(dietEntry.calories) || parseInt(dietEntry.calories) < 0) {
             alert('Please enter a valid non-negative integer for calories.');
             return;
@@ -87,6 +92,7 @@ const DietForm = () => {
                         try {
                             const dietData = {
                                 ...dietEntry,
+                                title:dietEntry.title.trimStart(),
                                 calories: Number(dietEntry.calories),
                                 special: isChecked ? !isChecked : isSpecial, // Update special status based on checkbox or calorie count
                             };
@@ -148,7 +154,7 @@ const DietForm = () => {
             <InputField
                 value={dietEntry.calories}
                 onChangeText={(text) => setDietEntry(prev => ({ ...prev, calories: text }))}
-                keyboardType="numeric"
+                
             />
             <TextHeader style={{marginTop:helper.margin.submitFormTextTop}}>Date * </TextHeader>
             <DateTimePickerHolder onPress={() => setShowDatePicker(true)}>
