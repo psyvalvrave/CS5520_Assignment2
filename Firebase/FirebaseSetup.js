@@ -12,7 +12,8 @@ const firebaseConfig = {
   appId: APP_ID
 };
 
-/* In case tester cannot get .env correctly, just uncomment below and use it for testing others
+//In case tester cannot get .env correctly, just uncomment below and use it for testing others
+/*
 const firebaseConfig = {
   apiKey: "AIzaSyB2C8i9H9ddisZ1SU-Sdx4qOW0kxRS5zJs",
   authDomain: "cs5520-48b90.firebaseapp.com",
